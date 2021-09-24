@@ -1,0 +1,11 @@
+---
+permalink: /humans.txt
+---
+
+
+
+
+# AUTHOR
+
+	Name: Adam Gian
+	Email: contact@adamgian.com

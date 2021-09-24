@@ -1,0 +1,17 @@
+---
+permalink: /manifest.json
+---
+
+
+
+
+{
+	"name": "{{site.name}}",
+	"short_name": "{{site.name}}",
+	"start_url": "/",
+	"scope": "/",
+	"display": "minimal-ui",
+	"orientation": "portrait",
+	"background_color": "#fcfcfc",
+	"theme_color": "#f26f18"
+}

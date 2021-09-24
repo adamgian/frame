@@ -1,0 +1,26 @@
+##### Directories
+dist/
+node_modules/
+src/.jekyll-cache/
+
+
+
+
+##### Files
+npm-debug.log
+
+# Webpack generated
+src/assets/javascript/esm/
+src/assets/javascript/es5/
+src/assets/javascript/*.*.js
+src/assets/styles/*.*.css
+src/service-worker.js
+src/**/*.temp.*
+
+# OS related
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+[Dd]esktop.ini
+Thumbs.db

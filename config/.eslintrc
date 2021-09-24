@@ -1,0 +1,38 @@
+{
+	"extends": [
+		"eslint:recommended"
+	],
+	"env": {
+		"browser": true,
+		"es6": true,
+	},
+	"ignorePatterns": [
+		"*.dev.js",
+		"*.min.js"
+	],
+	"parserOptions": {
+		"ecmaVersion": 2017,
+		"sourceType": "module",
+	},
+	"rules": {
+		"arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
+		"brace-style": ["warn", "stroustrup", { "allowSingleLine": true }],
+		"dot-notation": "error",
+		"eqeqeq": "error",
+		"indent": ["error", "tab"],
+		"linebreak-style": ["error", "unix"],
+		"no-array-constructor": "error",
+		"no-eval": "error",
+		"no-multi-assign": "error",
+		"no-new-object": "error",
+		"no-plusplus": "error",
+		"no-undef": "warn",
+		"no-unneeded-ternary": "error",
+		"no-unused-vars": "warn",
+		"no-var": "error",
+		"operator-linebreak": ["error", "before"],
+		"prefer-const": "warn",
+		"quotes": ["warn", "single", { "allowTemplateLiterals": true }],
+		"semi": ["error", "always"],
+	}
+}

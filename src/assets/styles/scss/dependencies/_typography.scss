@@ -1,0 +1,135 @@
+//  --------------------------------------------------------------------------------
+//  _typography.scss
+//  --------------------------------------------------------------------------------
+
+//  Typography
+//   ├─ Webfonts
+//   ├─ General
+//   ├─ Headings
+//   ├─ Paragraphs
+//   └─ Other
+
+
+
+
+
+//  --------------------------------------------------------------------------------
+//  Typography
+//  --------------------------------------------------------------------------------
+
+//  Webfonts -----------------------------------------------------------------------
+
+	@font-face {
+		font-display: swap;
+		font-family: 'Poly';
+		font-style: normal;
+		font-weight: normal;
+		src: url('/assets/fonts/poly-regular-latin-subset.woff2') format('woff2'),
+			url('/assets/fonts/poly-regular-latin-subset.woff') format('woff'),
+			url('/assets/fonts/poly-regular-latin-subset.ttf') format('truetype');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+			U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+			U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+
+//  General ------------------------------------------------------------------------
+
+	// The following elements can have text and
+	// therefore should get typograhic styling.
+	h1, h2, h3, p, a, i,
+	button, ul, li, th, td,
+	div, span, section, pre,
+	label, input, textarea {
+		// Allows for font styles (color, typeface, size
+		// and weight) to be later inherited by styles on
+		// the specific element or parent.
+		color: inherit;
+		font-family: inherit;
+		// font-feature-settings: 'kern' on;
+		font-kerning: auto;
+		font-size: inherit;
+		font-style: inherit;
+		font-weight: inherit;
+		font-variant: common-ligatures;
+		line-height: inherit;
+		// Fix sloppy rendering of font and icons
+		// on both chrome and firefox on Mac OSX.
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing:grayscale;
+	}
+
+	html {
+		color: $color--scorpion;
+		font-family: 'Poly', Georgia, serif;
+		// Fallback if fluid size is not applied.
+		font-size: $font-size--body;
+		font-weight: normal;
+		line-height: $baseline;
+		transition: font-size 0.2s ease-in-out;
+	}
+
+	// Fluid typography
+	html {
+		@include breakpoint(0, s) {
+			@include fluid-type($font-size--body - 1, $font-size--body, $breakpoint--min, $breakpoint--s - 20);
+		}
+
+		@include breakpoint(s, m) {
+			@include fluid-type($font-size--body - 1, $font-size--body, $breakpoint--s, $breakpoint--m - 20);
+		}
+
+		@include breakpoint(m, l) {
+			@include fluid-type($font-size--body - 1, $font-size--body, $breakpoint--m, $breakpoint--l);
+		}
+
+		// Stop font size from shrinking once under
+		// the minimum breakpoint size.
+		@include breakpoint(0, $breakpoint--min) {
+			font-size: $font-size--body - 1;
+		}
+
+		// Stop font size from increasing once over
+		// the large breakpoint.
+		@include breakpoint(l) {
+			font-size: $font-size--body;
+		}
+	}
+
+
+//  Headings -----------------------------------------------------------------------
+
+	h1 {
+		font-size: $font-size--head;
+		margin-top: 0.875rem;
+		margin-bottom: 0.875rem;
+	}
+
+	h2 {
+		font-size: $font-size--subhead;
+	}
+
+
+//  Paragraphs ---------------------------------------------------------------------
+
+	p {
+		max-width: 28rem;
+		vertical-align: bottom;
+	}
+
+	p + p {
+		margin-top: $baseline;
+	}
+
+	.p--lead {
+		font-size: $font-size--subhead;
+	}
+
+
+//  Other --------------------------------------------------------------------------
+
+	abbr {
+		font-variant: none;
+		text-decoration: none;
+		text-transform: none;
+	}

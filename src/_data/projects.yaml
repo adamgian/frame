@@ -1,0 +1,16 @@
+##### Project listing
+
+# Ordered listing used to generate the projects
+# page and next/prev project suggestions.
+
+
+
+
+- name: Gravitas
+  permalink: /project/gravitas
+  thumbnail: projects/gravitas__draw.png
+
+- name: Caboolture Country Markets
+  permalink: /project/caboolturecountrymarkets
+  thumbnail: thumbnails/caboolture-country-markets.jpg
+  border: true

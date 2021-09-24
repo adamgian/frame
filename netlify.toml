@@ -1,0 +1,49 @@
+[build.environment]
+  NODE_VERSION = "14.4.0"
+  RUBY_VERSION = "2.7.0"
+
+
+
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Credentials = "true"
+    Cache-Control = "max-age=7786800"
+    Content-Security-Policy = '''
+      base-uri 'self';
+      connect-src 'self';
+      default-src https:;
+      img-src 'self';
+      object-src 'none';
+      script-src 'unsafe-inline' https://example.com;
+      style-src 'self';
+      worker-src 'self';'''
+    # Server push
+    Link = '''
+      </assets/styles/main.min.css>; rel=preload; as=style, \
+      </assets/javascript/esm/main.min.js>; rel=preload; as=script'''
+    Referrer-Policy = "origin-when-cross-origin"
+    Strict-Transport-Security = '''
+      max-age=31536000;
+      includeSubDomains;
+      preload'''
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-UA-Compatible = "ie=edge"
+    X-XSS-Protection = "1; mode=block"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = '''
+      immutable,
+      max-age=31536000,
+      public'''
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = '''
+      max-age=31536000,
+      public'''

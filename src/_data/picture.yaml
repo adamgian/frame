@@ -1,0 +1,44 @@
+# Config for jekyll_picture_tag plugin
+
+media_queries:
+  breakpoint_s: 'min-width: 800px'
+  breakpoint_m: 'min-width: 1056px'
+  breakpoint_l: 'min-width: 1248px'
+  breakpoint_max: 'min-width: 1376px'
+
+presets:
+  default:
+    attributes:
+      img: 'decoding="async" loading="lazy"'
+      picture: 'class="media"'
+    fallback_width: 1056
+    formats: [webp, original]
+    format_quality:
+      avif: 62
+      jpg: 75
+      png: 75
+      webp: 75
+    size: calc(100vw - 56px)
+    sizes:
+      breakpoint_max: 1152px
+      breakpoint_l: calc(100vw - 224px)
+      breakpoint_m: calc(100vw - 168px)
+    widths: [480, 640, 800, 1056, 1248, 1376]
+
+  thumbnail:
+    attributes:
+      img: 'decoding="async" loading="lazy"'
+      picture: 'class="media"'
+    fallback_width: 640
+    formats: [webp, original]
+    format_quality:
+      avif: 62
+      jpg: 75
+      png: 75
+      webp: 75
+    size: calc(100vw - 56px)
+    sizes:
+      breakpoint_max: 1152px
+      breakpoint_l: calc((100vw - 224px) / 2)
+      breakpoint_m: calc((100vw - 168px) / 2)
+    widths: [480, 640, 800]

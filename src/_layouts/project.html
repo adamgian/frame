@@ -1,0 +1,37 @@
+---
+layout: master
+---
+
+
+
+
+{% include sitenav.html %}
+
+<main class="content">
+	{{ content }}
+
+	<section class="row--section">
+		{% for project in site.data.projects %}
+			{% if project.permalink == page.permalink %}
+				{% unless forloop.first %}
+					{% assign prev = forloop.index0 | minus: 1 %}
+					<p>
+						Previous project:<br>
+						<a class="anchor" href="{{ site.data.projects[prev].permalink }}">
+							{{ site.data.projects[prev].name }}
+						</a>
+					</p>
+				{% endunless %}
+				{% unless forloop.last %}
+					{% assign next = forloop.index0 | plus: 1 %}
+					<p>
+						Next project:<br>
+						<a class="anchor" href="{{ site.data.projects[next].permalink }}">
+							{{ site.data.projects[next].name }}
+						</a>
+					</p>
+				{% endunless %}
+			{% endif %}
+		{% endfor %}
+	</section>
+</main>

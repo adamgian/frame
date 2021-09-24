@@ -1,0 +1,37 @@
+##### Site
+name: Frame
+url: https://example.com
+apex: example.com
+email: hello@example.com
+# Main site color.
+# use any valid CSS color format for example:
+#  - color: "#F26F18"
+#  - color: "rgb(242, 111, 24)"
+#  - color: "rebeccapurple"
+color: "#F26F18"
+
+
+
+
+##### Build
+source: src/
+destination: dist/
+exclude:
+  - assets/styles/scss/
+  - assets/javascript/main-esm.js
+  - assets/javascript/main-es5.js
+  - assets/javascript/components/service-worker.js
+  - "*.master.*"
+
+
+
+
+##### Plugins
+
+plugins:
+  - jekyll-sitemap
+
+# jekyll_picture_tag
+picture:
+  output: assets/images
+  source: assets/images
