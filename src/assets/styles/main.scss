@@ -11,31 +11,27 @@
 
 
 
-
 //  --------------------------------------------------------------------------------
 //  Includes
 //  --------------------------------------------------------------------------------
 
-	@use 'sass:math';
-
-
 //  Dependencies -------------------------------------------------------------------
 
-    @import 'dependencies/function';
-    @import 'dependencies/variable';
-    @import 'dependencies/mixin';
-    @import 'dependencies/utility';
-    @import 'dependencies/reset';
-    @import 'dependencies/typography';
-    @import 'dependencies/animation';
+    @use 'dependencies/function';
+    @use 'dependencies/variable';
+    @use 'dependencies/mixin';
+    @use 'dependencies/utility';
+    @use 'dependencies/reset';
+    @use 'dependencies/typography';
+    @use 'dependencies/animation';
 
 
 //  Components ---------------------------------------------------------------------
 
-    @import 'components/anchor';
-    @import 'components/media';
+    @use 'components/anchor';
+    @use 'components/media';
 
 
 //  Layout -------------------------------------------------------------------------
 
-    @import 'layout/general';
+    @use 'layout/general';

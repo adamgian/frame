@@ -2,6 +2,8 @@
 <meta name="viewport" content="initial-scale=1, width=device-width">
 <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.name }}</title>
 
+{% include partials/page-fade-in.html %}
+
 {% if jekyll.environment == 'production' %}
 	{% include partials/main-scripts.temp.html %}
 	{% include partials/main-styles.temp.html %}
@@ -13,9 +15,9 @@
 <link rel="preload" href="/assets/fonts/poly-regular-latin-subset.woff2" as="font" type="font/woff2" crossorigin>
 
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-<link rel="icon" href="/assets/images/favicon.png" type="image/png">
 <link rel="manifest" href="/manifest.json">
 <link rel="author" href="/humans.txt">
+<link rel="icon" href="/assets/images/favicon.png" type="image/png">
 
 <meta name="description" content="{{ page.description }}">
 <meta name="theme-color" content="{% if site.color %}{{ site.color }}{% else %}#FFF{% endif %}">

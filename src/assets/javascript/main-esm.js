@@ -1,7 +1,7 @@
 /*
  * Stylesheets
  */
-import '../styles/scss/main.scss';
+import '../styles/main.scss';
 
 
 /*

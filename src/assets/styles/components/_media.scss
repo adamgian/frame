@@ -1,0 +1,106 @@
+// ---------------------------------------------------------------------------------
+// _image.scss
+// ---------------------------------------------------------------------------------
+
+// General media container
+//  └─ Bordered
+// Image
+//  └─ 404
+
+@use 'sass:math';
+@use '../dependencies/function';
+@use '../dependencies/variable' as *;
+@use '../dependencies/mixin';
+
+
+
+
+// ---------------------------------------------------------------------------------
+// General media container
+// ---------------------------------------------------------------------------------
+
+.media {
+	background-color: $color--wild-sand;
+	// Force whatever element this class may be
+	// applied to always display as a block.
+	display: block;
+	overflow: hidden;
+	// The point of a ~66% bottom padding is that it will
+	// lock the image container to a 3:2 ratio.
+	padding-bottom: 66.6666%;
+	position: relative;
+	width: 100%;
+
+	+ .media {
+		margin-top: $baseline;
+	}
+}
+
+// Element within the image container
+.media {
+	> img,
+	> video {
+		display: block;
+		width: 100%;
+		position: absolute;
+		z-index: 0;
+	}
+}
+
+
+// Bordered ------------------------------------------------------------------------
+
+// .media.media--border
+.media--border {
+	&::after {
+		@include mixin.absolute(top left);
+		@include mixin.size(100%);
+		border: 1px solid function.hsb(0, 0, 0, 0.05);
+		box-sizing: border-box;
+		content: '';
+	}
+}
+
+
+
+
+// ---------------------------------------------------------------------------------
+// Images
+// ---------------------------------------------------------------------------------
+
+img {
+	// Remove border inside links in IE 10.
+	border-style: none;
+}
+
+// 404 -----------------------------------------------------------------------------
+
+// Prettier broken images
+
+img[alt] {
+	&::after,
+	&::before {
+		box-sizing: border-box;
+		color: rgba(0, 0, 0, 0.2);
+		padding: $baseline calc( #{math.div($baseline, 2)} + 1%);
+	}
+
+	&::after {
+		@include mixin.absolute(top left);
+		@include mixin.size(100%);
+		background-color: $color--wild-sand;
+		content: '404';
+		font-family: monospace;
+		font-weight: bold;
+	}
+
+	&::before {
+		@include mixin.absolute(top $baseline left);
+		content: '“' attr(alt) '”';
+		font-size: 0.9em;
+		font-style: italic;
+		height: calc(100% - #{$baseline * 2});
+		width: 100%;
+		z-index: 1;
+	}
+}

@@ -1,12 +1,10 @@
-const body = document.querySelector('body');
-const content = document.querySelector('.content');
-
 const ANIMATION_DURATION = 300;
+const CONTENT = document.querySelector('.content');
 
 
 
 
-body.addEventListener('click', handleClick);
+document.addEventListener('click', handleClick);
 
 window.addEventListener('popstate', async (event) => {
 	updateAnchorStatesPreLoad();
@@ -53,17 +51,17 @@ function fetchPage(url) {
 	let animationStart = Date.now();
 	let animationTimer;
 
-	content.classList.add('is-loading');
+	CONTENT.classList.add('is-loading');
 
 	return fetch(url)
 		.then(res => res.text())
 		.then((body) => {
 			data.title = body
-				.split( /(<title>)\s*/ )[2]
-				.split( /\s*(<\/title>)/ )[0];
+				.split(/(<title>)\s*/)[2]
+				.split(/\s*(<\/title>)/)[0];
 			data.content = body
-				.split( /(<main class="content">)\s*/ )[2]
-				.split( /\s*(<\/main>)/ )[0];
+				.split(/(<main[^>]*>)\s*/)[2]
+				.split(/\s*(<\/main>)/)[0];
 		})
 		.catch((err) => {
 			data.title = 'Error';
@@ -111,12 +109,13 @@ function updateContent(data) {
 
 	// Update title and content
 	document.title = data.title;
-	content.innerHTML = data.content;
+	CONTENT.textContent = '';
+	CONTENT.insertAdjacentHTML('afterbegin', data.content);
 
 	// Finalise page loading
 	window.scrollTo(0, 0);
 	window.dispatchEvent(event);
-	content.classList.remove('is-loading');
+	CONTENT.classList.remove('is-loading');
 
 }
 
@@ -136,11 +135,9 @@ function updateAnchorStatesPreLoad(target = window.location.href) {
 
 		if ((target !== anchor) && (target !== anchor.href)) return;
 
-		// Add 'is-active' class to anchor that was clicked
-		anchor.classList.add(
-			'is-active',
-			(target instanceof Element) && 'is-hovered',
-		);
+		// Add 'is-active' class to anchor that was clicked.
+		// 'is-hovered' added to persist :hover state of anchor.
+		anchor.classList.add('is-active', 'is-hovered');
 	});
 }
 
@@ -151,10 +148,13 @@ function updateAnchorStatesPreLoad(target = window.location.href) {
 function updateAnchorStatesPostLoad() {
 	const anchors = document.querySelectorAll('a:not([href^=http])');
 
-	setTimeout(() => {
-		Array.from(anchors).forEach((anchor) => {
+	setTimeout(
+		() => {
 			// Need to remove any current 'is-hovered' class from anchor.
-			anchor.classList.remove('is-hovered');
-		});
-	}, ANIMATION_DURATION);
+			Array.from(anchors).forEach((anchor) => {
+				anchor.classList.remove('is-hovered');
+			});
+		},
+		ANIMATION_DURATION
+	);
 }

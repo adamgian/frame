@@ -1,8 +1,8 @@
 ##### Site
 name: Frame
-url: https://example.com
-apex: example.com
-email: hello@example.com
+url: https://FIXME.com
+apex: FIXME.com
+email: hello@FIXME.com
 # Main site color.
 # use any valid CSS color format for example:
 #  - color: "#F26F18"
@@ -17,11 +17,11 @@ color: "#F26F18"
 source: src/
 destination: dist/
 exclude:
-  - assets/styles/scss/
   - assets/javascript/main-esm.js
   - assets/javascript/main-es5.js
   - assets/javascript/components/service-worker.js
   - "*.master.*"
+  - "*.scss"
 
 
 

@@ -1,5 +1,5 @@
 [build.environment]
-  NODE_VERSION = "14.17.1"
+  NODE_VERSION = "16.14.0"
   RUBY_VERSION = "2.7.0"
 
 
@@ -13,16 +13,25 @@
     Content-Security-Policy = '''
       base-uri 'self';
       connect-src 'self';
-      default-src https:;
+      child-src 'none';
+      default-src 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      frame-src 'none';
       img-src 'self';
       object-src 'none';
-      script-src 'unsafe-inline' https://example.com;
-      style-src 'self';
+      script-src
+        'unsafe-inline'
+        https://FIXME.com
+        'sha256-EEybHJZUypDMBVev5n3BUh6duuW4ILpyFg5JAgNGg00='
+        'sha256-gHyVVUzFNcxjOj45EjZhOt9JDKkTbri0FGRgwNfdXi4='
+        'strict-dynamic';
+      style-src
+        'self'
+        'sha256-Qq7senOC9u8jv57/SvoWpxlNzyz6wgYYt1vreE3gW5w='
+        'strict-dynamic';
+      upgrade-insecure-requests;
       worker-src 'self';'''
-    # Server push
-    Link = '''
-      </assets/styles/main.min.css>; rel=preload; as=style, \
-      </assets/javascript/esm/main.min.js>; rel=preload; as=script'''
     Referrer-Policy = "origin-when-cross-origin"
     Strict-Transport-Security = '''
       max-age=31536000;

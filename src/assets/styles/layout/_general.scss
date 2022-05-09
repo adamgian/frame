@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------------------------
+// _general.scss
+// ---------------------------------------------------------------------------------
+
+// General
+
+@use '../dependencies/variable' as *;
+
+
+
+
+// ---------------------------------------------------------------------------------
+// General
+// ---------------------------------------------------------------------------------
+
+html {
+	background-color: $color--alabaster;
+	// Set a 'fixed' width and hide overflow to <html>
+	// element which prevents any cases where content may
+	// reflow — due to an appearing/disappearing vertical
+	// scrollbar when navigating between short/long pages.
+	overflow-x: hidden;
+	width: 100vw;
+}
+
+body {
+	// Initial page load (fade in).
+	// CSS only implementation, 0 opacity set in an embed style
+	// and will be overriden once main styles have been loaded.
+	animation-name: fade-in;
+	animation-fill-mode: both;
+	animation-duration: 500ms;
+	animation-timing-function: ease-out;
+
+	max-width: $breakpoint--max;
+	min-width: $breakpoint--min;
+	// Fallback if CSS animation isn't supported
+	opacity: 1;
+}
