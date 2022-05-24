@@ -18,7 +18,7 @@ const es5 = {
 	stats: 'normal',
 	context: path.resolve(__dirname, '../src/'),
 	entry: {
-		main: './assets/javascript/main-es5.js'
+		main: './assets/javascript/es5.entry.js'
 	},
 	output: {
 		filename: 'assets/javascript/es5/[name].min.js',
@@ -89,7 +89,7 @@ const esm = {
 	stats: 'verbose',
 	context: path.resolve(__dirname, '../src/'),
 	entry: {
-		main: './assets/javascript/main-esm.js',
+		main: './assets/javascript/esm.entry.js',
 		'service-worker': {
 			import: './assets/javascript/components/service-worker.js',
 			filename: 'service-worker.js',

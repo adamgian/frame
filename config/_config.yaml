@@ -1,7 +1,6 @@
 ##### Site
 name: Frame
 url: https://FIXME.com
-apex: FIXME.com
 email: hello@FIXME.com
 # Main site color.
 # use any valid CSS color format for example:
@@ -9,6 +8,7 @@ email: hello@FIXME.com
 #  - color: "rgb(242, 111, 24)"
 #  - color: "rebeccapurple"
 color: "#F26F18"
+favicon: "/assets/images/favicon.png"
 
 
 
@@ -17,9 +17,8 @@ color: "#F26F18"
 source: src/
 destination: dist/
 exclude:
-  - assets/javascript/main-esm.js
-  - assets/javascript/main-es5.js
   - assets/javascript/components/service-worker.js
+  - "*.entry.js"
   - "*.master.*"
   - "*.scss"
 

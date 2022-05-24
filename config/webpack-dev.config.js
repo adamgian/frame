@@ -13,7 +13,7 @@ module.exports = {
 	stats: 'normal',
 	context: path.resolve(__dirname, '../src/'),
 	entry: {
-		main: './assets/javascript/main-esm.js'
+		main: './assets/javascript/esm.entry.js'
 	},
 	output: {
 		filename: 'assets/javascript/[name].dev.js',

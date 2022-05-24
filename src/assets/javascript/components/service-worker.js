@@ -75,10 +75,8 @@ function fetchHandler(event) {
 						if (!response || response.status !== 200)
 							return response;
 
-						// Intercept
-						const isInternalRequest = /(http|https):\/\/{{ site.apex }}/
-							.test(event.request.url);
-						if (!isInternalRequest) return response;
+						// Intercept - continue if it is an internal request
+						if (event.request.url !== "{{ site.url }}") return response;
 
 						// Clone response
 						const responseToCache = response.clone();
