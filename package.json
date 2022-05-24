@@ -1,6 +1,7 @@
 {
     "name": "frame",
     "version": "1.0.0",
+    "description": "FIXME: add your own site/project description here.",
     "author": {
         "name": "Adam Gian",
         "email": "contact@adamgian.com",
@@ -20,7 +21,7 @@
         "serve:jekyll": "wait-on -d 1000 \"src/assets/javascript/main.dev.js\" && cross-env JEKYLL_ENV=development jekyll serve --config config/_config.yaml,config/_config-dev.yaml --livereload",
         "serve:webpack": "cross-env NODE_ENV=development webpack --config config/webpack-dev.config.js --watch",
         "clean:pre": "rimraf \"dist/\" && mkdirp \"dist/\"",
-        "clean:post": "rimraf \"src/assets/javascript/es5/\" \"src/assets/javascript/esm/\" \"src/assets/javascript/*.*.js\" \"src/service-worker.js\" \"src/assets/styles/*.*.css\" \"src/**/*.temp.*\"",
+        "clean:post": "rimraf \"src/assets/javascript/es5/\" \"src/assets/javascript/esm/\" \"src/assets/javascript/*.dev.js\" \"src/assets/javascript/*.min.js\" \"src/service-worker.js\" \"src/assets/styles/*.*.css\" \"src/**/*.temp.*\"",
         "test": "eslint -c config/.eslintrc src/assets/javascript"
     },
     "dependencies": {
@@ -45,7 +46,7 @@
         "html-minifier-terser": "^6.0.2",
         "ignore-loader": "^0.1.2",
         "mini-css-extract-plugin": "^2.0.0",
-        "minify-selectors": "^0.7.8",
+        "minify-selectors": "^0.9.8",
         "mkdirp": "^1.0.4",
         "path": "^0.12.7",
         "postcss": "^8.3.7",

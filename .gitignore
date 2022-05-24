@@ -13,6 +13,7 @@ npm-debug.log
 src/assets/javascript/esm/
 src/assets/javascript/es5/
 src/assets/javascript/*.*.js
+!src/assets/javascript/*.entry.js
 src/assets/styles/*.*.css
 src/service-worker.js
 src/**/*.temp.*
