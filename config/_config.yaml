@@ -1,23 +1,23 @@
 ##### Site
-name: Frame
-url: https://FIXME.com
-email: hello@FIXME.com
+name: "Frame" # FIXME
+url: "https://FIXME.com" # FIXME
+email: "hello@FIXME.com" # FIXME
 # Main site color.
 # use any valid CSS color format for example:
 #  - color: "#F26F18"
 #  - color: "rgb(242, 111, 24)"
 #  - color: "rebeccapurple"
-color: "#F26F18"
-favicon: "/assets/images/favicon.png"
+color: "#F26F18" # FIXME
+favicon: "/assets/images/favicon.png" # FIXME
 
 
 
 
 ##### Build
-source: src/
-destination: dist/
+source: "src/"
+destination: "dist/"
 exclude:
-  - assets/javascript/components/service-worker.js
+  - "assets/javascript/components/service-worker.js"
   - "*.entry.js"
   - "*.master.*"
   - "*.scss"
@@ -32,5 +32,5 @@ plugins:
 
 # jekyll_picture_tag
 picture:
-  output: assets/images
-  source: assets/images
+  output: "assets/images"
+  source: "assets/images"

@@ -1,6 +1,6 @@
-//  --------------------------------------------------------------------------------
-//  main.scss
-//  --------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
+// main.scss
+// ---------------------------------------------------------------------------------
 
 //  Includes
 //   ├─ Dependencies
@@ -11,27 +11,28 @@
 
 
 
-//  --------------------------------------------------------------------------------
-//  Includes
-//  --------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
+// Includes
+// ---------------------------------------------------------------------------------
 
-//  Dependencies -------------------------------------------------------------------
+// Dependencies --------------------------------------------------------------------
 
-    @use 'dependencies/function';
-    @use 'dependencies/variable';
-    @use 'dependencies/mixin';
-    @use 'dependencies/utility';
-    @use 'dependencies/reset';
-    @use 'dependencies/typography';
-    @use 'dependencies/animation';
+@use 'dependencies/function';
+@use 'dependencies/variable';
+@use 'dependencies/mixin';
+@use 'dependencies/utility';
+@use 'dependencies/reset';
+@use 'dependencies/typography';
+@use 'dependencies/animation';
 
 
 //  Components ---------------------------------------------------------------------
 
-    @use 'components/anchor';
-    @use 'components/media';
+@use 'components/anchor';
+@use 'components/media';
 
 
 //  Layout -------------------------------------------------------------------------
 
-    @use 'layout/general';
+@use 'layout/general';
+// @use 'layout/print';

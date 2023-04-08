@@ -21,26 +21,59 @@
 
 // Webfonts ------------------------------------------------------------------------
 
+//! To self host fonts from Google:
+//!   1. Select font and weights from fonts.google.com
+//!   2. Get link to CSS file and navigate to that URL
+//!   3. Download appropriate subset version/s of font by saving the fonts
+//!      within the src rule into src/assets/fonts/
+//!   4. For each font, create a @font-face rule, for example:
+// @font-face {
+// 	font-display: swap;
+// 	font-family: 'Poly';
+// 	font-style: normal;
+// 	font-weight: 400;
+// 	src: url('/assets/fonts/poly-400-latin.woff2') format('woff2');
+// 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+// 		U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+// 		U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+// }
+
+//! FIXME: Populate this with your font/s (and their weight/s)
 @font-face {
 	font-display: swap;
-	font-family: 'Poly';
+	font-family: 'Libre Franklin';
 	font-style: normal;
-	font-weight: normal;
-	src: url('/assets/fonts/poly-regular-latin-subset.woff2') format('woff2'),
-		url('/assets/fonts/poly-regular-latin-subset.woff') format('woff'),
-		url('/assets/fonts/poly-regular-latin-subset.ttf') format('truetype');
+	font-weight: 400;
+	src: url('/assets/fonts/libre-franklin-400-latin.woff') format('woff');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
+		U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
+		U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Libre Franklin';
+	font-style: italic;
+	font-weight: 400;
+	src: url('/assets/fonts/libre-franklin-400-italic-latin.woff') format('woff');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
 		U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122,
 		U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 // Fallback
+//! FIXME: Set and configure fallback font to match primary font
+//! as close as possible to minimise FOUT.
+//!
+//! Rules you can try to slightly adjust the fallback to fit:
+//!  - ascent-override
+//!  - descent-override
+//!  - line-gap-override
+//!  - size-adjust
 @font-face {
-	font-family: 'Georgia';
-	ascent-override: 96.4%;
-	descent-override: 22.4%;
-	line-gap-override: 0%;
-	src: local(Georgia);
+	font-family: 'Helvetica';
+	size-adjust: 103.3%;
+	src: local(Helvetica);
 }
 
 
@@ -67,8 +100,9 @@ label, input, textarea {
 }
 
 html {
-	color: $color--scorpion;
-	font-family: 'Poly', 'Georgia', serif;
+	color: $color--treetop-cathedral;
+	//! FIXME: Set font family
+	font-family: 'Libre Franklin', 'Helvetica', serif;
 	// Fallback if fluid size is not applied.
 	font-size: $font-size--body;
 	font-weight: normal;
@@ -127,10 +161,7 @@ h2 {
 
 // Paragraphs ----------------------------------------------------------------------
 
-p {
-	max-width: 28rem;
-	vertical-align: bottom;
-}
+p {}
 
 p + p {
 	margin-top: $baseline;

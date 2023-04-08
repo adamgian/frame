@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.name }}</title>
+<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.name }}</title>
 
 {% include partials/page-fade-in.html %}
 
@@ -12,7 +12,8 @@
 	<script src="/assets/javascript/main.dev.js" defer></script>
 {% endif %}
 
-<link rel="preload" href="/assets/fonts/poly-regular-latin-subset.woff2" as="font" type="font/woff2" crossorigin>
+<!-- FIXME: Make sure that the correct font file is preloaded -->
+<link rel="preload" href="/assets/fonts/libre-franklin-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 <link rel="manifest" href="/manifest.json">
