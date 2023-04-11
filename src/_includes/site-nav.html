@@ -1,0 +1,5 @@
+<nav class="site-nav">
+	<h1>{{site.name}}</h1>
+	<a class="anchor" href="/" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
+	<a class="anchor" href="/about" {% if page.url == '/about' %}aria-current="page"{% endif %}>About</a>
+</nav>

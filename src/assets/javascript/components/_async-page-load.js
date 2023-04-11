@@ -6,7 +6,7 @@ const CONTENT = document.querySelector('.content');
 
 document.addEventListener('click', handleClick);
 
-window.addEventListener('popstate', async (event) => {
+window.addEventListener('popstate', async () => {
 	updateAnchorStatesPreLoad();
 	await fetchPage(window.location.href);
 	updateAnchorStatesPostLoad();
@@ -16,13 +16,11 @@ window.addEventListener('popstate', async (event) => {
 
 
 async function handleClick(event) {
-	let target;
-
 	// Ignore click handler if ctrl/command clicked.
 	if (event.metaKey || event.ctrlKey) return;
 
 	// Try to get anchor element that was clicked (if it was).
-	target = event.target.closest('a');
+	const target = event.target.closest('a');
 
 	// Don't bother with running rest of code if
 	// element that was clicked is not even an anchor.
@@ -32,7 +30,6 @@ async function handleClick(event) {
 	if (target.host !== window.location.host) return;
 
 	event.preventDefault();
-	target.blur();
 
 	updateAnchorStatesPreLoad(target);
 	history.pushState({}, null, target.href);
@@ -47,8 +44,11 @@ async function handleClick(event) {
  * @param {string} url
  */
 function fetchPage(url) {
-	let data = { title: '', content: '' };
-	let animationStart = Date.now();
+	const data = {
+		title: '',
+		content: '',
+	};
+	const animationStart = Date.now();
 	let animationTimer;
 
 	CONTENT.classList.add('is-loading');
@@ -64,7 +64,7 @@ function fetchPage(url) {
 				.split(/\s*(<\/main>)/)[0];
 		})
 		.catch((err) => {
-			data.title = 'Error';
+			data.title = 'Error — Adam Gian';
 			data.content = `<p>Sorry, there was a problem while fetching page.</p>`;
 			console.log(err);
 		})
@@ -108,8 +108,8 @@ function updateContent(data) {
 	}
 
 	// Update title and content
-	document.title = data.title;
 	CONTENT.textContent = '';
+	document.title = data.title;
 	CONTENT.insertAdjacentHTML('afterbegin', data.content);
 
 	// Finalise page loading
@@ -131,13 +131,14 @@ function updateAnchorStatesPreLoad(target = window.location.href) {
 	// Going through each anchor that has an internal link.
 	// If clicked link doesn't match, immediately skip.
 	Array.from(anchors).forEach((anchor) => {
-		anchor.classList.remove('is-active');
+		anchor.removeAttribute('aria-current');
 
 		if ((target !== anchor) && (target !== anchor.href)) return;
 
-		// Add 'is-active' class to anchor that was clicked.
+		// Add sctive state to anchor that was clicked.
 		// 'is-hovered' added to persist :hover state of anchor.
-		anchor.classList.add('is-active', 'is-hovered');
+		anchor.setAttribute('aria-current', 'page');
+		anchor.classList.add('is-hovered');
 	});
 }
 

@@ -39,8 +39,9 @@ $baseline: 1.525em;
 // Sizes ---------------------------------------------------------------------------
 
 $font-size--body: 18px;
-$font-size--subhead: 1.175em;
 $font-size--head: 1.5em;
+$font-size--subhead: 1.175em;
+$font-size--small: 0.875em;
 
 
 
@@ -55,7 +56,8 @@ $font-size--head: 1.5em;
 $breakpoint--xs: 30 * $font-size--body;
 $breakpoint--s: 50 * $font-size--body;
 $breakpoint--m: 66 * $font-size--body;
-$breakpoint--l: 78 * $font-size--body;
+$breakpoint--l: 72 * $font-size--body;
+$breakpoint--xl: 80 * $font-size--body;
 
 $breakpoint--min: 22 * $font-size--body;
 $breakpoint--max: 86 * $font-size--body;
