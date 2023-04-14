@@ -3,12 +3,14 @@
 // ---------------------------------------------------------------------------------
 
 // Anchor
-//  ├─ Base
-//  ├─ Active
-//  └─ Hovered/focused
+//  ├─ Base state
+//  ├─ Active state
+//  ├─ Hovered state
+//  └─ Focused state
 
 @use 'sass:math';
 @use '../dependencies/variable' as *;
+@use '../dependencies/function';
 @use '../dependencies/mixin';
 
 
@@ -18,128 +20,73 @@
 // Anchor
 // ---------------------------------------------------------------------------------
 
-// Base ----------------------------------------------------------------------------
+// Base state ----------------------------------------------------------------------
 
 .anchor {
-	// Remove gray background on active links in IE 10.
-	background-color: transparent;
-	// Typographic underline
-	// by using background image positioned beneath text.
-	background-image:
-		linear-gradient(
-			to top,
-			rgba(0, 0, 0, 0) #{math.div($baseline, 6)},
-			#{$color--tango} #{math.div($baseline, 6)},
-			#{$color--tango} calc(#{math.div($baseline, 6)} + 2px),
-			rgba(0, 0, 0, 0) calc(#{math.div($baseline, 6)} + 2px)
-		);
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+	border-radius: 1px;
 	display: inline-block;
-	font-style: normal;
+	isolation: isolate;
 	position: relative;
-	text-decoration: none;
+	text-decoration: 1px underline;
 	transition:
-		background-size 125ms ease-in-out 250ms,
-		color 200ms ease-in-out;
-	white-space: nowrap;
-	// Note: Required to set a z-index to create a new
-	// stacking context. ie. the background pseudo element
-	// (which is -1) will not obscure the anchor text.
-	z-index: 0;
+		color 225ms ease-in-out 125ms,
+		text-decoration-color 225ms ease-in-out 125ms;
+
+	// Increase the clickable area of the anchor element itself.
+	&::after {
+		@include mixin.size(100%);
+		border: #{4 * math.div(1, function.strip-unit($font-size--body))}em solid transparent;
+		content: "";
+		display: block;
+		left: -#{4 * math.div(1, function.strip-unit($font-size--body))}em;
+		opacity: 0;
+		position: absolute;
+		top: -#{4 * math.div(1, function.strip-unit($font-size--body))}em;
+		z-index: -1;
+	}
 }
 
-// Place margin between adjacent anchors
-// (ie. anchors in nav).
-.anchor + .anchor {
-	margin-left: math.div($baseline, 2);
-}
 
-
-// Active --------------------------------------------------------------------------
+// Active state --------------------------------------------------------------------
 
 // Underline
 .anchor[aria-current="page"] {
-	background-size: 0 100%;
+	color: $color--tango;
+	text-decoration-color: $color--tango;
 }
 
 
-// Strikethrough
-.anchor {
-	&::before {
-		border-top: 2px solid $color--tango;
-		bottom: calc(#{math.div($baseline, 2)} - 2px);
-		content: '';
-		left: -3px;
-		pointer-events: none;
-		position: absolute;
-		transform: scaleX(0);
-		transform-origin: 100% 50%;
-		transition: transform 125ms ease-in;
-		width: calc(100% + 6px);
-	}
+// Hovered state -------------------------------------------------------------------
 
-	&[aria-current="page"]::before {
-		transform: scaleX(1);
-		transform-origin: 0% 50%;
-		transition: transform 125ms ease-out 100ms;
-	}
-}
-
-
-// Hovered/focused -----------------------------------------------------------------
-
-// Anchor text
 .anchor {
 	&.is-hovered,
-	&:focus,
 	&:hover {
-		color: white;
-		transition: color 200ms ease-in-out 100ms;
+		color: $color--tango;
+		transition-delay: 10ms;
 	}
-}
 
-// Strikethrough
-.anchor[aria-current="page"] {
-	&.is-hovered,
-	&:focus,
-	&:hover {
-		&::before {
-			transition-delay: 100ms;
+	// Hovering over an active link
+	&[aria-current="page"] {
+		&.is-hovered,
+		&:hover {
+			text-decoration-color: transparent;
 		}
 	}
 }
 
-// Background block.
-// Yes, this can done by simply setting a background color
-// and padding directly onto the anchor element. However
-// this adds space around the anchor and using a pseudo
-// element provides more flexibility.
-.anchor {
 
-	// The background block while inert increases the clickable
-	// area of the anchor element itself.
-	&::after {
-		@include mixin.size(100%);
-		background-clip: padding-box;
-		background-color: $color--tango;
-		border-left: 2px solid transparent;
-		border-right: 2px solid transparent;
-		content: '';
-		display: block;
-		left: -2px;
-		opacity: 0;
-		position: absolute;
-		top: 0;
-		transition: opacity 200ms ease-in-out;
-		z-index: -1;
+// Focused state -------------------------------------------------------------------
+
+.anchor:focus {
+	text-decoration: transparent;
+}
+
+@supports selector(:focus-visible) {
+	.anchor:focus {
+		text-decoration: underline;
 	}
 
-	&.is-hovered::after,
-	&:focus::after,
-	&:hover::after {
-		opacity: 1;
-		transition-delay: 100ms;
+	.anchor:focus-visible {
+		text-decoration: transparent;
 	}
-
 }
