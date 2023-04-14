@@ -85,18 +85,9 @@ h1, h2, h3, p, a, i,
 button, ul, li, th, td,
 div, span, section, pre,
 label, input, textarea {
-	// Allows for font styles (color, typeface, size
-	// and weight) to be later inherited by styles on
-	// the specific element or parent.
-	color: inherit;
-	font-family: inherit;
 	// font-feature-settings: 'kern' on;
 	font-kerning: auto;
-	font-size: inherit;
-	font-style: inherit;
-	font-weight: inherit;
 	font-variant: common-ligatures;
-	line-height: inherit;
 }
 
 html {
@@ -194,4 +185,8 @@ sub {
 
 sup {
 	top: -0.5em;
+}
+
+u {
+	text-decoration: underline;
 }

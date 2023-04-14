@@ -24,14 +24,14 @@ html {
 }
 
 body {
-	// Initial page load (fade in).
+	// Initial page load (fade in) animation.
 	// CSS only implementation, 0 opacity set in an embed style
 	// and will be overriden once main styles have been loaded.
 	animation-name: fade-in;
 	animation-fill-mode: both;
 	animation-duration: 500ms;
 	animation-timing-function: ease-out;
-
+	margin: 0;
 	max-width: $breakpoint--max;
 	min-width: $breakpoint--min;
 	// Fallback if CSS animation isn't supported
