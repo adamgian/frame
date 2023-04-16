@@ -1,6 +1,6 @@
 {
     "name": "frame",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "FIXME: add your own site/project description here.",
     "author": {
         "name": "Adam Gian",
@@ -21,7 +21,7 @@
         "serve:jekyll": "wait-on -d 1000 \"src/assets/javascript/main.dev.js\" && cross-env JEKYLL_ENV=development jekyll serve --config config/_config.yaml,config/_config-dev.yaml --livereload",
         "serve:webpack": "cross-env NODE_ENV=development webpack --config config/webpack-dev.config.js --watch",
         "clean:pre": "rimraf \"dist/\" && mkdirp \"dist/\"",
-        "clean:post": "rimraf \"src/assets/javascript/es5/\" \"src/assets/javascript/esm/\" \"src/assets/javascript/*.dev.js\" \"src/assets/javascript/*.min.js\" \"src/service-worker.js\" \"src/assets/styles/*.*.css\" \"src/**/*.temp.*\"",
+        "clean:post": "rimraf --glob \"src/assets/javascript/es5/\" \"src/assets/javascript/esm/\" \"src/assets/*/*.dev.*\" \"src/assets/*/*.min.*\" \"src/service-worker.js\" \"src/**/*.temp.*\"",
         "test": "eslint -c config/.eslintrc src/assets/javascript"
     },
     "dependencies": {

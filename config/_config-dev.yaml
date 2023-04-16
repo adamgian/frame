@@ -1,2 +1,9 @@
 ##### Build
 port: 9001
+include:
+  - "*.dev.*"
+exclude:
+  - assets/javascript/components/service-worker.js
+  - "*.entry.js"
+  - "*.min.*"
+  - "*.scss"
